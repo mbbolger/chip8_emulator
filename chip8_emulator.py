@@ -394,3 +394,5 @@ class CPU:
 
 if __name__ == "__main__":
 	CPU().main()
+
+	
