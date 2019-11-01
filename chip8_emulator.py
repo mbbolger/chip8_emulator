@@ -25,70 +25,70 @@ class CPU:
 		}
 
 		self.fonts = [
-						 0xF0, 0x90, 0x90, 0x90, 0xF0,  # 0
-						 0x20, 0x60, 0x20, 0x20, 0x70,  # 1
-						 0xF0, 0x10, 0xF0, 0x80, 0xF0,  # 2
-						 0xF0, 0x10, 0xF0, 0x10, 0xF0,  # 3
-						 0x90, 0x90, 0xF0, 0x10, 0x10,  # 4
-						 0xF0, 0x80, 0xF0, 0x10, 0xF8,  # 5
-						 0xF0, 0x80, 0xF0, 0x90, 0xF0,  # 6
-						 0xF0, 0x10, 0x20, 0x40, 0x40,  # 7
-						 0xF0, 0x90, 0xF0, 0x90, 0xF0,  # 8
-						 0xF0, 0x90, 0xF0, 0x10, 0xF0,  # 9
-						 0xF0, 0x90, 0xF0, 0x90, 0x90,  # A
-						 0xE0, 0x90, 0xE0, 0x90, 0xE0,  # B
-						 0xF0, 0x80, 0x80, 0x80, 0xF0,  # C
-						 0xE0, 0x90, 0x90, 0x90, 0xE0,  # D
-						 0xF0, 0x80, 0xF0, 0x80, 0xF0,  # E
-						 0xF0, 0x80, 0xF0, 0x80, 0x80,  # F
-					 ]
+				 0xF0, 0x90, 0x90, 0x90, 0xF0,  # 0
+				 0x20, 0x60, 0x20, 0x20, 0x70,  # 1
+				 0xF0, 0x10, 0xF0, 0x80, 0xF0,  # 2
+				 0xF0, 0x10, 0xF0, 0x10, 0xF0,  # 3
+				 0x90, 0x90, 0xF0, 0x10, 0x10,  # 4
+				 0xF0, 0x80, 0xF0, 0x10, 0xF8,  # 5
+				 0xF0, 0x80, 0xF0, 0x90, 0xF0,  # 6
+				 0xF0, 0x10, 0x20, 0x40, 0x40,  # 7
+				 0xF0, 0x90, 0xF0, 0x90, 0xF0,  # 8
+				 0xF0, 0x90, 0xF0, 0x10, 0xF0,  # 9
+				 0xF0, 0x90, 0xF0, 0x90, 0x90,  # A
+				 0xE0, 0x90, 0xE0, 0x90, 0xE0,  # B
+				 0xF0, 0x80, 0x80, 0x80, 0xF0,  # C
+				 0xE0, 0x90, 0x90, 0x90, 0xE0,  # D
+				 0xF0, 0x80, 0xF0, 0x80, 0xF0,  # E
+				 0xF0, 0x80, 0xF0, 0x80, 0x80,  # F
+			     ]
 
 
 		self.opcode_lookup = {
-								0x0000: {
-											0x0000: self.sys_addr,       # 0nnn
-											0x00E0: self.clear_screen,   # 00E0
-											0x00EE: self.ret 			 # 00EE
-										 },                         
-								0x1000: self.jp_addr,                    # 1nnn
-								0x2000: self.call_addr,                  # 2nnn
-								0x3000: self.se_vx_byte,                 # 3nkk
-								0x4000: self.sne_vx_byte,                # 4xkk
-								0x5000: self.se_vx_vy,                   # 5xy0
-								0x6000: self.ld_vx_byte,                 # 6xkk
-								0x7000: self.add_vx_byte,                # 7xkk
-								0x8000: {
-											0x0000: self.ld_vx_vy,       # 8XY0
-											0x0001: self.or_vx_vy,       # 8XY1
-											0x0002: self.and_vx_vy,      # 8XY2
-											0x0003: self.xor_vx_vy,      # 8xy3
-											0x0004: self.add_vx_vy,      # 8xy4
-											0x0005: self.sub_vx_vy,      # 8xy5
-											0x0006: self.shr_vx_vy,      # 8xy6
-											0x0007: self.subn_vx_vy,     # 8xy7
-											0x000E: self.shl_vx_vy		 # 8xyE
-										 },                         
-								0x9000: self.sne_vx_vy,                  # 9xy0
-								0xA000: self.ld_i_addr,                  # Annn
-								0xB000: self.jp_v0_addr,                 # Bnnn
-								0xC000: self.rnd_vx_byte,                # Cxkk
-								0xD000: self.drw_vx_vy_n,                # Dvyn
-								0xE000: {
-											0x009E: self.skp_vx,         # Ex9E
-											0x00A1: self.sknp_vx		 # ExA1
-										},                          
-								0xF000: {
-											0x0007: self.ld_vx_dt,       # Fx07
-											0x000A: self.ld_vx_k,        # Fx0A
-											0x0015: self.ld_dt_vx,       # Fx15
-											0x0018: self.ld_st_vx,       # Fx18
-											0x001E: self.add_i_vx,       # Fx1E
-											0x0029: self.ld_f_vx,        # Fx29
-											0x0033: self.ld_b_vx,        # Fx33
-											0x0055: self.ld_i_vx,        # Fx55
-											0x0065: self.ld_vx_i		 # Fx65
-										}                           	
-								}
+					0x0000: {
+						0x0000: self.sys_addr,       	# 0nnn
+						0x00E0: self.clear_screen,   	# 00E0
+						0x00EE: self.ret 		# 00EE
+					 	},                         
+					0x1000: self.jp_addr,                    # 1nnn
+					0x2000: self.call_addr,                  # 2nnn
+					0x3000: self.se_vx_byte,                 # 3nkk
+					0x4000: self.sne_vx_byte,                # 4xkk
+					0x5000: self.se_vx_vy,                   # 5xy0
+					0x6000: self.ld_vx_byte,                 # 6xkk
+					0x7000: self.add_vx_byte,                # 7xkk
+					0x8000: {
+						0x0000: self.ld_vx_vy,       	 # 8XY0
+						0x0001: self.or_vx_vy,       	 # 8XY1
+						0x0002: self.and_vx_vy,      	 # 8XY2
+						0x0003: self.xor_vx_vy,      	 # 8xy3
+						0x0004: self.add_vx_vy,      	 # 8xy4
+						0x0005: self.sub_vx_vy,      	 # 8xy5
+						0x0006: self.shr_vx_vy,      	 # 8xy6
+						0x0007: self.subn_vx_vy,     	 # 8xy7
+						0x000E: self.shl_vx_vy		 # 8xyE
+					 	},                         
+					0x9000: self.sne_vx_vy,                  # 9xy0
+					0xA000: self.ld_i_addr,                  # Annn
+					0xB000: self.jp_v0_addr,                 # Bnnn
+					0xC000: self.rnd_vx_byte,                # Cxkk
+					0xD000: self.drw_vx_vy_n,                # Dvyn
+					0xE000: {
+						0x009E: self.skp_vx,         	 # Ex9E
+						0x00A1: self.sknp_vx		 # ExA1
+						},                          
+					0xF000: {
+						0x0007: self.ld_vx_dt,       	 # Fx07
+						0x000A: self.ld_vx_k,        	 # Fx0A
+						0x0015: self.ld_dt_vx,       	 # Fx15
+						0x0018: self.ld_st_vx,       	 # Fx18
+						0x001E: self.add_i_vx,       	 # Fx1E
+						0x0029: self.ld_f_vx,        	 # Fx29
+						0x0033: self.ld_b_vx,        	 # Fx33
+						0x0055: self.ld_i_vx,        	 # Fx55
+						0x0065: self.ld_vx_i		 # Fx65
+						}                           	
+					}
 	####################
 	#    GAME LOOP     #
 	####################
